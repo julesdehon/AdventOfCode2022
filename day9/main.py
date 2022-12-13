@@ -43,23 +43,17 @@ def follow(follower: Tuple[int, int], leader: Tuple[int, int]) -> Tuple[int, int
     if abs(horizontal_distance) <= 1 and abs(vertical_distance) <= 1:
         return follower
 
-    if abs(horizontal_distance) > 1:
+    if abs(horizontal_distance) == 2:
         fx += horizontal_distance - (abs(horizontal_distance) / horizontal_distance)
-        if abs(vertical_distance) > 1:
-            fy += vertical_distance - (abs(vertical_distance) / vertical_distance)
-        else:
-            fy += vertical_distance
+    elif abs(horizontal_distance) == 1:
+        fx += horizontal_distance
 
-        return fx, fy
-
-    if abs(vertical_distance) > 1:
+    if abs(vertical_distance) == 2:
         fy += vertical_distance - (abs(vertical_distance) / vertical_distance)
-        if abs(horizontal_distance) > 1:
-            fx += horizontal_distance - (abs(horizontal_distance) / horizontal_distance)
-        else:
-            fx += horizontal_distance
+    elif abs(vertical_distance) == 1:
+        fy += vertical_distance
 
-        return fx, fy
+    return fx, fy
 
 
 def get_unique_positions(movements: List[Tuple[str, int]], num_knots: int) -> Set[Tuple[int, int]]:
